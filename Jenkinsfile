@@ -11,9 +11,9 @@ pipeline {
 
   stages {
 
-    stage('Clone Code') {
+    stage('Checkout') {
       steps {
-        git:'https://github.com/ayuhcl/node-app.git'
+        git url:'https://github.com/ayuhcl/node-app.git', branch:'main'
       }
     }
 
