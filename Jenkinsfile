@@ -5,10 +5,6 @@ pipeline {
     nodejs 'node25'
   }
 
-  environment {
-    SONAR_TOKEN = credentials('sonarqube-token')
-  }
-
   stages {
 
     stage('Checkout') {
