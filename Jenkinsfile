@@ -24,15 +24,15 @@ pipeline {
     }
 
     stage('SonarQube Analysis') {
-      steps {
-        withSonarQubeEnv('SonarServer') {
-          sh """
-          sonar-scanner \
-          -Dsonar.login=$SONAR_TOKEN
-          """
-        }
+  steps {
+    script {
+      def scannerHome = tool 'sonar-scanner'
+      withSonarQubeEnv('SonarServer') {
+        sh "${scannerHome}/bin/sonar-scanner"
       }
     }
+  }
+}
 
     stage('Build Docker Image') {
       steps {
